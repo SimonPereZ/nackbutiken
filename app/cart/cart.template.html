@@ -1,0 +1,31 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div ng-show="success" class="alert alert-success">
+                <strong>Tack för ditt köp!</strong> Din order har tagits emot. Välkommen åter.
+            </div>
+            <div ng-show="failed" class="alert alert-danger">
+                <strong>Fel!</strong> Tyvärr har någonting gått fel och din order har inte gått igenom.
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h2 class="text-center"><span class="glyphicon glyphicon-shopping-cart"></span> Kundvagn</h2>
+            <hr>
+            <ul>
+                <li ng-repeat="product in cart" class="small"><span class="badge pull-right">Antal: {{ product.quantity }}</span> <br>{{ product.name }}<br>{{ product.price
+                    }} Kr
+                    <button type="button" class="btn btn-danger btn-xs pull-right" ng-click="removeFromCart(product)"><span class="glyphicon glyphicon-remove"></span></button>
+                    <hr>
+                </li>
+                <b>Total kostnad: {{totalCost}} kr</b>
+            </ul>
+            <p ng-show="!loggedIn" class="text-danger text-center"><b>Du behöver logga in för att kunna beställa</b></p>
+            <button ng-disabled="cart[0] == null || !loggedIn " type="button" class="btn btn-success btn-block" ng-click="makeOrder()"> Köp</button>
+        </div>
+    </div>
+
+</div>

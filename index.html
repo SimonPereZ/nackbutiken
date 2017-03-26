@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Nackbutik</title>
+  <base href="/">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css" type="text/css">
+
+  <script src="bower_components\angular\angular.min.js"></script>
+  <script src="bower_components\angular-route\angular-route.min.js"></script>
+  <script src="bower_components\angular-animate\angular-animate.min.js"></script>
+  <script src="bower_components\angular-bootstrap\ui-bootstrap.min.js"></script>
+  <script src="bower_components\angular-bootstrap\ui-bootstrap-tpls.min.js"></script>
+</head>
+
+<body ng-app="app" ng-controller="appController">
+  <h1 class="text-center">Nackademiska</h1>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <p class="navbar-text"> Nackbutik </p>
+      </div>
+      <div class="nav navbar-nav">
+        <a href="/" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-home"></span> Home</a>
+      </div>
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search produkt" ng-model="productSearchInput">>
+        </div>
+      </form>
+      <li class="nav navbar-nav" uib-dropdown>
+        <button uib-dropdown-toggle class="btn btn-default navbar-btn">kategorier <span class="caret"></span></button>
+        <ul uib-dropdown-menu>
+          <li ng-repeat="category in categories" ng-click="onCategorySelect(category.id)"><a ui-sref="a">{{ category.name }}</a></li>
+        </ul>
+      </li>
+      <div class="nav navbar-nav navbar-right">
+         <p class="navbar-text" ng-show="loggedin"><span class="glyphicon glyphicon-arrow-right"></span> Inloggad som: {{ name }}</p>
+        <a ng-hide="loggedin" href="/signUp" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+        <a ng-hide="loggedin" href="/logIn" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+        <a ng-show="loggedin" href="/" ng-click="logOut()" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-log-out"></span> LogOut</a>
+      </div>
+    </div>
+  </nav>
+  </div>
+  </nav>
+
+  <div id="ng-view" ng-view></div>
+
+  <script src="app/app.module.js"></script>
+  <script src="app/app.controller.js"></script>
+  <script src="app/app.config.js"></script>
+
+
+  <script src="app\products\product.module.js"></script>
+  <script src="app\products\product.service.js"></script>
+  <script src="app\products\product.controller.js"></script>
+  <script src="app\products\product.template.html"></script>
+
+  <script src="app\category\category.module.js"></script>
+  <script src="app\category\category.service.js"></script>
+
+  <script src="app\cart\cart.module.js"></script>
+  <script src="app\cart\cart.service.js"></script>
+  <script src="app\cart\cart.controller.js"></script>
+  <script src="app\cart\cart.template.html"></script>
+
+  <script src="app\signUp\signup.module.js"></script>
+  <script src="app\signUp\signup.service.js"></script>
+  <script src="app\signUp\signup.controller.js"></script>
+  <script src="app\signUp\signup.template.html"></script>
+
+  <script src="app\logIn\login.module.js"></script>
+  <script src="app\logIn\login.service.js"></script>
+  <script src="app\logIn\login.controller.js"></script>
+  <script src="app\logIn\login.template.html"></script>
+
+</body>
+
+</html>
