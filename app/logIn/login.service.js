@@ -4,9 +4,7 @@ angular.module("logIn")
         var loggedIn = false;
         var user;
         var userId;
-        var doLoginError = false;
         var userName;
-        var error = true;
 
         return {
             doLogin: function (username, password) {
